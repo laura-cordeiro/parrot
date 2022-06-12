@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 30% !important;
+    background-color: #FFF;
+}
+
+.form{
+    text-align: center;
+}
+
+.input-forms::placeholder{
+    text-align: center;
+}
