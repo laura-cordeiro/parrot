@@ -10,6 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idUsers: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         foreignKey: true,
         field: "idUsers",
@@ -19,6 +20,7 @@ module.exports = {
         }
       },
       content: {
+        allowNull: false,
         type: Sequelize.STRING(300)
       },
       deletedAt: {

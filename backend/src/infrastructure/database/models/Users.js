@@ -1,5 +1,5 @@
-const db = require("../index");
-const { DataTypes } = require("sequelize");
+const db = require("../index"),
+  { DataTypes } = require("sequelize");
 
 const Users = db.define(
   "Users",
@@ -11,16 +11,22 @@ const Users = db.define(
       type: DataTypes.INTEGER
     },
     name: {
+      allowNull: false,
       type: DataTypes.STRING
     },
     email: {
+      allowNull: false,
       type: DataTypes.STRING
     },
     apartment: {
       type: DataTypes.INTEGER
     },
     password: {
+      allowNull: false,
       type: DataTypes.STRING
+    },
+    deletedAt: {
+      type: DataTypes.DATE
     },
     createdAt: {
       allowNull: false,

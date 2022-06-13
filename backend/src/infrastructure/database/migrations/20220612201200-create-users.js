@@ -10,15 +10,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
+        allowNull: false,
         type: Sequelize.STRING(70)
       },
       email: {
+        allowNull: false,
         type: Sequelize.STRING(70)
       },
       apartment: {
         type: Sequelize.INTEGER
       },
       password: {
+        allowNull: false,
         type: Sequelize.STRING(120)
       },
       deletedAt: {
