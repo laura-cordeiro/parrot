@@ -1,0 +1,5 @@
+body{
+    background: url('../../assets/images/BACKGROUND.png') repeat;
+    background-size: contain;
+    height: 100vh;
+}
