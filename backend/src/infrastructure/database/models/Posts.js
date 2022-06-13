@@ -10,7 +10,7 @@ const Posts = db.define(
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    idUsers: {
+    idUser: {
       allowNull: false,
       type: DataTypes.INTEGER,
       foreignKey: true,

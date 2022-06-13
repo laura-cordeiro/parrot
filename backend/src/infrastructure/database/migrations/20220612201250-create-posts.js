@@ -9,14 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idUsers: {
+      idUser: {
         allowNull: false,
         type: Sequelize.INTEGER,
         foreignKey: true,
-        field: "idUsers",
+        field: "idUser",
         references: {
           model: "Users",
-          key: "idUsers"
+          key: "idUser"
         }
       },
       content: {
