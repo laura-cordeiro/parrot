@@ -2,4 +2,10 @@ body{
     background: url('../../assets/images/BACKGROUND.png') repeat;
     background-size: contain;
     height: 100vh;
+    box-sizing: border-box;
+}
+
+.login{
+    position: absolute;
+    margin: 60px 500px;
 }

@@ -1,15 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 .container{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 30% !important;
+    justify-content: center ;
+    width: 390px !important;
+    height: 520px;
     background-color: #FFF;
+    font-family: Questrial;
+}
+
+Form{
+    width: 70%;
+    margin: 0 auto;
 }
 
 .form{
     text-align: center;
 }
 
+.input-forms{
+    border-radius: 10px;
+    border: 1px solid #919191;
+    
+}
+
 .input-forms::placeholder{
     text-align: center;
+}
+
+Button {
+    width: 90% !important;
+    margin: 0 auto !important;
+    background-color: #76BB4C !important;
+    border-radius: 10px;
+    border: none !important;
 }
