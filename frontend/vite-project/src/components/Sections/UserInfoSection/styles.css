@@ -17,6 +17,10 @@
     margin: 10px;
 }
 
+.nome{
+    color: #76BB4C;
+    margin: 0;
+}
 .user-personal-data ul{
     padding: 0px 3px;
 }
@@ -25,9 +29,6 @@
     list-style: none;
 }
 
-.edit-profile{
-    margin-top: 10px;
-}
 
 #edit-profile-link {
     background-color: #76BB4C;
@@ -35,4 +36,5 @@
     text-decoration: none;
     padding: 6px 14px;
     border-radius: 30px;
+    font-size: 16px;
 }

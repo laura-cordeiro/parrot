@@ -1,4 +1,4 @@
-import Header from "./components"
+import Header from "./components/Header"
 import MyRoutes from "./MyRoutes"
 import 'bootstrap/dist/css/bootstrap.min.css';
 

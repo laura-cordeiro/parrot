@@ -1,6 +1,6 @@
-import './Header/styles.css'
+import './styles.css'
 
-import Logo from '../assets/images/parrot-logo-2.png'
+import Logo from '../../assets/images/parrot-logo-2.png'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
                     <img src={Logo} alt='Logo Parrot'></img>
                 </div>
                 <div>
-                    <p>Olá, usuário | <Link to='/login' id='exit'>sair</Link></p>
+                    <p id='usuario'>Olá, usuário | <Link to='/login' id='exit'>sair</Link></p>
                 </div>
             </div>
 
