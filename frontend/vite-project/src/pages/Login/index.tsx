@@ -8,7 +8,9 @@ function Login() {
 
   return (
     <div className="login">
+      <div className="container-form">
        <LoginForm />
+       </div>
     </div>
   )
 }

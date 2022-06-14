@@ -1,8 +1,15 @@
+import Header from "../../components"
+import UserInfoSection from "../../components/Sections/UserInfoSection"
+
+import './styles.css'
 
 const UserProfile = () => {
  return(
     <div>
-      <h1>Testando!!!!</h1>
+      <Header />
+      <main>
+          <UserInfoSection />
+      </main>
     </div>
  )
 }

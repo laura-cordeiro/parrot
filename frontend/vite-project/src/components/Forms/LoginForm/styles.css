@@ -21,7 +21,7 @@ Form{
 }
 
 .input-forms{
-    border-radius: 10px;
+    border-radius: 10px !important;
     border: 1px solid #919191;
     
 }
@@ -34,6 +34,11 @@ Button {
     width: 90% !important;
     margin: 0 auto !important;
     background-color: #76BB4C !important;
-    border-radius: 10px;
+    border-radius: 10px !important;
     border: none !important;
+}
+
+#link-signup{
+    text-decoration: none !important;
+    color: #555555;
 }

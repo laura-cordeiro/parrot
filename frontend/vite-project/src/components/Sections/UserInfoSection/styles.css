@@ -1,0 +1,38 @@
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid #c5c5c5;
+    padding: 40px 20px;
+    font-family: Questrial;
+}
+
+.user-info{
+    display: flex;
+    
+}
+
+.user-personal-data{
+    margin: 10px;
+}
+
+.user-personal-data ul{
+    padding: 0px 3px;
+}
+
+.user-personal-data ul li {
+    list-style: none;
+}
+
+.edit-profile{
+    margin-top: 10px;
+}
+
+#edit-profile-link {
+    background-color: #76BB4C;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 30px;
+}

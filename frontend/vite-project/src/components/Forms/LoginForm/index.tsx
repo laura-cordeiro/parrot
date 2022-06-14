@@ -1,4 +1,5 @@
 import { Button, Form, FormControl, FormGroup } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 import Logo from '../../../assets/images/logo.png'
 
@@ -26,9 +27,9 @@ const LoginForm =  () => {
                 </Form>
             </div>
             <div className='pb-5'>
-                <span>
+                <Link to='/cadastro' id='link-signup'>
                     cadastre-se
-                </span>
+                </Link>
             </div>
         </div>
     )
