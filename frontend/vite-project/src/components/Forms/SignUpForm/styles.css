@@ -1,0 +1,29 @@
+#containerCadastro-img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url('../../../assets/images/BACKGROUND.png');
+    background-size: 60%;
+    background-repeat: inherit;
+}
+
+.container-cadastro{
+    margin-top: 2%;
+    background-color: #FFF;
+    height: 600px;
+}
+
+div h4{
+    margin-bottom: 30px;
+}
+
+.input-forms::placeholder{
+    text-align: center;
+}
+
+
+
+#button-width{
+    width: 90%;
+}
+
