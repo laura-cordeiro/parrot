@@ -1,4 +1,4 @@
-const { Posts } = require("../../../infrastructure/database/models");
+const { Posts } = require("../models");
 
 const PostsController = {
   async getAllPosts(req, res) {
@@ -8,7 +8,7 @@ const PostsController = {
       const offset = limit * (parseInt(page) - 1);
       let filter = {
         limit,
-        offset,
+        offset
       };
       const posts = await Posts.findAll(filter);
       return res.status(200).json(posts);
@@ -18,7 +18,7 @@ const PostsController = {
   },
   getUserPosts(req, res) {},
 
-  createPost(req, res) {},
+  createPost(req, res) {}
 };
 
 module.exports = PostsController;

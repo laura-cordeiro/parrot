@@ -1,5 +1,5 @@
-const Users = require("./users"),
-  Posts = require("./posts");
+const Users = require("../../users/models/Users"),
+  Posts = require("./Posts");
 
 Posts.belongsTo(Users, {
   foreignKey: "idUsers"

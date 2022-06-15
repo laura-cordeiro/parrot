@@ -1,4 +1,4 @@
-const { Users } = require("../../../infrastructure/database/models");
+const { Users } = require("../models");
 
 const UsersController = {
   async createUser(req, res) {
