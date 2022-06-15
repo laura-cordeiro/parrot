@@ -2,7 +2,7 @@ const db = require("../index"),
   { DataTypes } = require("sequelize");
 
 const Users = db.define(
-  "Users",
+  "users",
   {
     idUser: {
       allowNull: false,
