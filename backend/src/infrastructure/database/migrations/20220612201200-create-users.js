@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Users", {
+    await queryInterface.createTable("users", {
       idUser: {
         allowNull: false,
         autoIncrement: true,
@@ -24,6 +24,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(120)
       },
+      admin: {
+        type: Sequelize.BOOLEAN
+      },
       deletedAt: {
         type: Sequelize.DATE
       },
@@ -39,6 +42,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Users");
+    await queryInterface.dropTable("users");
   }
 };

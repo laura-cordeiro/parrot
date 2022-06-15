@@ -4,7 +4,7 @@ const { faker } = require("@faker-js/faker");
 
 let seed = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 50; i++) {
   seed.push({
     name: faker.name.findName(),
     email: faker.internet.email(),

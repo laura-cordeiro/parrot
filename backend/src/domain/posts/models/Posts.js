@@ -1,8 +1,8 @@
-const db = require("../index"),
+const db = require("../../../infrastructure/database"),
   { DataTypes } = require("sequelize");
 
 const Posts = db.define(
-  "Posts",
+  "posts",
   {
     idPosts: {
       allowNull: false,
@@ -14,10 +14,10 @@ const Posts = db.define(
       allowNull: false,
       type: DataTypes.INTEGER,
       foreignKey: true,
-      field: "idUsers",
+      field: "idUser",
       references: {
-        model: "Users",
-        key: "idUsers"
+        model: "users",
+        key: "idUser"
       }
     },
     content: {
