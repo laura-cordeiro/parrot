@@ -25,6 +25,9 @@ const Users = db.define(
       allowNull: false,
       type: DataTypes.STRING
     },
+    admin: {
+      type: DataTypes.BOOLEAN
+    },
     deletedAt: {
       type: DataTypes.DATE
     },
