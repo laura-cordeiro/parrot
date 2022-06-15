@@ -1,7 +1,7 @@
 header{
     width: 100%;
     background-color: #FFFFFF;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08) ;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
     font-family: Questrial;
 }
 
@@ -15,8 +15,8 @@ header{
 
 }
 
-p{
-    color: #76BB4C;
+#usuario{
+    color: #76BB4C !important;
     font-size: 20px;
 }
 

@@ -1,5 +1,6 @@
-import Header from "../../components"
+import Header from "../../components/Header"
 import UserInfoSection from "../../components/Sections/UserInfoSection"
+import UserTweets from "../../components/Sections/UserTweets"
 
 import './styles.css'
 
@@ -9,6 +10,7 @@ const UserProfile = () => {
       <Header />
       <main>
           <UserInfoSection />
+          <UserTweets />
       </main>
     </div>
  )
