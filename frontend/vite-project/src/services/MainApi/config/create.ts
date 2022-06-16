@@ -20,7 +20,7 @@ export function loginUsuario(payload: UsuarioLogin) {
 }
 
 export function listarPostsGeral() {
-    return baseApi('/posts/:id')
+    return baseApi('/posts')
 }
 
 export function infoUsuario(id:any) {

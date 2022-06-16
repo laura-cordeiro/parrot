@@ -55,7 +55,7 @@ const UserTweets: React.FC = () => {
         
     
         if(quantidadePosts){
-            return(    <div id='container-posts'>
+            return(    <div className='container-posts'>
                 {tweets.map(tweet => (
                        <div className='wrapper'>
                        <div className="user-info">
