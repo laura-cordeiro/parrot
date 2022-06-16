@@ -9,7 +9,8 @@ const express = require("express"),
   validatorUptadeUser = require("../domain/users/validations/updateUsers"),
   validatorDeleteUser = require("../domain/users/validations/deleteUsers"),
   authController = require("../domain/login/controllers/authController"),
-  loginValidator = require("../domain/login/validations/loginValidator");
+  loginValidator = require("../domain/login/validations/loginValidator"),
+  authenticator = require("../middlewares/auth")
 
 routes.post("/login", loginValidator, authController.login);
 
@@ -19,7 +20,7 @@ routes.get("/users/:id", validatorReadUser, UsersController.readUsersId);
 routes.put("/users/:id", validatorUptadeUser, UsersController.updateUsers);
 routes.delete("/users/:id", validatorDeleteUser, UsersController.deleteUsers);
 
-routes.get("/posts/:id", validatorGetPost, PostsController.getUserPosts);
+routes.get("/posts/:id",authenticator, validatorGetPost, PostsController.getUserPosts);
 routes.get("/posts", PostsController.getAllPosts);
 routes.post("/post", validatorCreatePost, PostsController.createPost);
 routes.put("/post/:id", PostsController.updatePost);
