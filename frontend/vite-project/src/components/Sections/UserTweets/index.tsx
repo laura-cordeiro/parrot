@@ -3,53 +3,75 @@ import Picture from '../../../assets/images/imagem-perfil.png'
 import './styles.css'
 
 import { useEffect, useState } from 'react'
-import { listarPosts } from '../../../services/MainApi/config/create'
+import { infoUsuario, listarPostsUsuario } from '../../../services/MainApi/config/create'
+import { useParams } from 'react-router-dom'
 
 interface TweetsUsuario {
-    nome: string,
-    apartamento: string,
-    horario?: string,
-    mensagem: string
-
+    content: string,
+    createdAt: string,
+  
 }
+
+interface InfoUsuario {
+    name: string,
+    email: string,
+    apartment: number,
+    password: string,
+    idUser: number
+}
+
 
 const UserTweets: React.FC = () => {
     const [tweets, setTweets] = useState<TweetsUsuario[]>([])
-    useEffect(() => {
-        
-            
-        const getData = async () => {
-            try{
-            const response = await listarPosts()
+    const [info, setInfo] = useState<InfoUsuario>()
 
-            setTweets(response.data)
-        }
-             catch (error) {
-         alert('Ocorreu um erro')   
+    const { id } = useParams()
+
+    
+
+     //Funcao para obter os posts do usuário
+     const obterPosts = async () => {
+        const posts = await listarPostsUsuario(id)
+        setTweets(posts.data)
+        return console.log(posts.data);
+        
+     }
+
+      //Funcao para obter os dados do usuário da API
+    const obterDados = async () => {
+        const dados = await infoUsuario(id)
+        setInfo(dados.data)
+        return console.log(dados.data);
+
     }
 
-    getData()
-    
-    
-    }}, [setTweets])
-
+     //UseEffect
+     useEffect(() => {
+        obterPosts()
+        obterDados()
+     }, [])
+        
     return(
-        <div className='wrapper'>
-             {tweets.map( tweet => (
-                 <div className="user-info">
+        <div>
+            {tweets.map(tweet => (
+                   <div className='wrapper'>
+                   <div className="user-info">
            
-                 <div className="user-image">
-                     <img src={Picture} alt='Imagem de perfil'></img>
-                 </div>
-                 <div className='user-tweet'>
-                     <h6 className='nome'>{tweet.nome} - {tweet.apartamento}</h6>
-                     <span>00/00/2022 00:00</span>
-                     <p>{tweet.mensagem}</p>
-                 </div>
-             </div>
-                ))}
-       
-    </div>
+                   <div className="user-image">
+                       <img src={Picture} alt='Imagem de perfil'></img>
+                   </div>
+                   <div className='user-tweet'>
+                       <h6 className='nome'>{info?.name} - Apê {info?.apartment}</h6>
+                       <span>{tweet.createdAt[8]}{tweet.createdAt[9]}/{tweet.createdAt[5]}{tweet.createdAt[6]}/{tweet.createdAt[0]}{tweet.createdAt[1]}{tweet.createdAt[2]}{tweet.createdAt[3]} - {tweet.createdAt[11]}{tweet.createdAt[12]}:{tweet.createdAt[14]}{tweet.createdAt[15]}</span>
+                       <p>{tweet.content}</p>
+                   </div>
+               </div>
+               
+      
+           </div>
+            ))}
+         
+        </div>    
     )
 }
 

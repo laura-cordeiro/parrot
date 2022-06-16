@@ -20,8 +20,16 @@ export function loginUsuario(payload: UsuarioLogin) {
     return baseApi.post('/login', payload)
 }
 
-export function listarPosts() {
-    return baseApi('//user-posts/:id')
+export function listarPostsGeral() {
+    return baseApi('/posts/:id')
+}
+
+export function infoUsuario(id:any) {
+    return baseApi(`/users/${id}`)
+}
+
+export function listarPostsUsuario(id:any) {
+    return baseApi(`/posts/${id}`)
 }
 
 // export function testeUsuario() {
