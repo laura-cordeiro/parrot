@@ -11,6 +11,17 @@ const LoginForm =  () => {
     const [email, setEmail] = useState<string>("")
     const [senha, setSenha] = useState<string>("")
 
+    // const teste = async (event: FormEvent) => {
+    //     event.preventDefault()
+    //     try {
+    //         const response = await testeUsuario()
+    //         return console.log(response.data)
+    //     } catch (error) {
+    //         return console.log(error)
+    //     }
+       
+    // }
+
     const login = async (event: FormEvent) => {
         event.preventDefault()
         const payload = {
@@ -38,7 +49,7 @@ const LoginForm =  () => {
             </div>
             <div className='form mb-4' >
                 <h4 className='mb-4'>Login</h4>
-                <Form onSubmit={login}>
+                <Form>
                     <Form.Group className='mb-4'>
                         <Form.Control className='input-forms' type='email' placeholder='email' value={email} onChange={(event) => setEmail(event.target.value)} />
                     </Form.Group>
