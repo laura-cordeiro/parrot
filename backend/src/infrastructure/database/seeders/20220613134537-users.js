@@ -17,7 +17,7 @@ for (let i = 0; i < 50; i++) {
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Users", seed);
+    await queryInterface.bulkInsert("users", seed);
   },
 
   async down(queryInterface, Sequelize) {
