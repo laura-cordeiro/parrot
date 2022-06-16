@@ -1,20 +1,22 @@
 const express = require("express"),
   routes = express.Router(),
   UsersController = require("../domain/users/controllers/usersController"),
-  PostsController = require("../domain/posts/controllers/postsController");
+  PostsController = require("../domain/posts/controllers/postsController"),
+  validatorGetPost = require("../domain/posts/validations/getPost")
+  validatorCreatePost = require("../domain/posts/validations/createPost")
+  
+  
+
 
 
 routes.post("/users", UsersController.createUser);
 routes.get("/users", UsersController.readUsers);
+routes.get("/users/:id", UsersController.readUsersId);
 routes.put("/users/:id", UsersController.updateUsers);
 routes.delete("/users/:id", UsersController.deleteUsers);
 
-
-routes.get("/user-posts/:id",PostsController.getUserPosts);
-routes.get("/all-posts",PostsController.getAllPosts);
-routes.post("/post",PostsController.createPost);
-
-
-
+routes.get("/posts/:id",validatorGetPost, PostsController.getUserPosts);
+routes.get("/posts", PostsController.getAllPosts);
+routes.post("/post",validatorCreatePost,PostsController.createPost);
 
 module.exports = routes;

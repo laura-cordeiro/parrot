@@ -7,15 +7,26 @@ interface UsuarioLogin {
 
 interface UsuarioPayload extends UsuarioLogin{
     nome: string,
+    senhaConfirmacao: string
     apartamento: string,
-    linkFoto: string
+    
 }
 
 export function cadastroUsuario(payload: UsuarioPayload) {
-    return baseApi.post('/cadastro', payload)
+    return baseApi.post('/users', payload)
 }
 
 export function loginUsuario(payload: UsuarioLogin) {
     return baseApi.post('/login', payload)
 }
+
+export function listarPosts() {
+    return baseApi('//user-posts/:id')
+}
+
+// export function testeUsuario() {
+//     return baseApi.get('/users')
+// }
+
+
 

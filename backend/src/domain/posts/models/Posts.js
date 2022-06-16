@@ -1,27 +1,26 @@
-const db = require("../index"),
+const db = require("../../../infrastructure/database"),
   { DataTypes } = require("sequelize");
 
-const Users = db.define(
-  "users",
+const Posts = db.define(
+  "posts",
   {
-    idUser: {
+    idPosts: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    name: {
+    idUser: {
       allowNull: false,
-      type: DataTypes.STRING
+      type: DataTypes.INTEGER,
+      foreignKey: true,
+      field: "idUser",
+      references: {
+        model: "users",
+        key: "idUser"
+      }
     },
-    email: {
-      allowNull: false,
-      type: DataTypes.STRING
-    },
-    apartment: {
-      type: DataTypes.INTEGER
-    },
-    password: {
+    content: {
       allowNull: false,
       type: DataTypes.STRING
     },
@@ -38,9 +37,9 @@ const Users = db.define(
     }
   },
   {
-    tableName: "users",
+    tableName: "posts",
     paranoid: true
   }
 );
 
-module.exports = Users;
+module.exports = Posts;

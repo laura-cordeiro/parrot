@@ -4,7 +4,7 @@ const { faker } = require("@faker-js/faker");
 
 let seed = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 50; i++) {
   seed.push({
     name: faker.name.findName(),
     email: faker.internet.email(),
@@ -17,7 +17,7 @@ for (let i = 0; i < 10; i++) {
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert("Users", seed);
+    await queryInterface.bulkInsert("users", seed);
   },
 
   async down(queryInterface, Sequelize) {

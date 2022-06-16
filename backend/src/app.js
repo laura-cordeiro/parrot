@@ -3,6 +3,7 @@ const express = require("express"),
   cors = require("cors"),
   db = require("./infrastructure/database"),
   routes = require("./routes");
+  handleError = require("./middlewares/handleError")
 
 db.hasConnection();
 app.use(express.json());

@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 const baseApi = axios.create({
-    // baseURL: 'http:// --- Falta definir' 
-    // headers: {
-    //    "Content-Type": "application/json",
-    // }
+    baseURL: 'http://localhost:4000',
+    headers: {
+       "Content-Type": "application/json",
+    }
 })
 
 export default baseApi
