@@ -1,6 +1,6 @@
 const { validate, Joi } = require("express-validation");
 
-export const update = validate({
+module.exports = validate({
   params: Joi.object({
     id: Joi.number().required().integer,
   }),

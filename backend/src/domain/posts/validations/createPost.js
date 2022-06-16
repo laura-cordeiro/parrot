@@ -1,9 +1,9 @@
 const { validate, Joi } = require("express-validation");
 
-export const create = validate({
+module.exports = validate({
   body: Joi.object({
-    post_id: Joi.number().required().integer(),
-    user_id: Joi.number().required().integer(),
-    content: Joi.string().required().max(200),
+    id: Joi.number().required().integer(),
+    idUser: Joi.number().required().integer(),
+    content: Joi.string().required().max(200)
   }),
 });
