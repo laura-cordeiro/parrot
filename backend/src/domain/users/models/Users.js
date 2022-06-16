@@ -1,4 +1,4 @@
-const db = require("../index"),
+const db = require("../../../infrastructure/database"),
   { DataTypes } = require("sequelize");
 
 const Users = db.define(
@@ -24,6 +24,9 @@ const Users = db.define(
     password: {
       allowNull: false,
       type: DataTypes.STRING
+    },
+    admin: {
+      type: DataTypes.BOOLEAN
     },
     deletedAt: {
       type: DataTypes.DATE

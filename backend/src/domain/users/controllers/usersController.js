@@ -1,4 +1,4 @@
-const { Users } = require("../../../infrastructure/database/models");
+const { Users } = require("../models");
 
 const UsersController = {
   async createUser(req, res) {
@@ -33,9 +33,20 @@ const UsersController = {
       return res.status(500).json("Erro ao listar os usuários");
     }
   },
-  async updateUsers(req, res) {
-    const { idUser } = req.params;
+  async readUsersId(req, res) {
     try {
+      const { idUser } = req.params;
+      const listUsers = await Users.findOne({
+        where: { idUser }
+      });
+      if (!listUsers) return res.status(404).json(listUsers);
+    } catch (error) {
+      return res.status(500).json("Erro ao listar o usuário");
+    }
+  },
+  async updateUsers(req, res) {
+    try {
+      const { idUser } = req.params;
       const updatePassword = bcryptjs.hashSync(password, 10);
       const updateUser = await Users.updateUsers(
         {
