@@ -2,7 +2,7 @@ const { validate, Joi } = require("express-validation");
 
 module.exports = validate({
   body: Joi.object({
-    idUser: Joi.number().required().integer(),
-    content: Joi.string().required().max(200)
-  }),
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required()
+  })
 });
