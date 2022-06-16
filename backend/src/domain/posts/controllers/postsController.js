@@ -13,7 +13,11 @@ const PostsController = {
         limit,
         offset,
       };
-      const posts = await Posts.findAll(filter);
+      const posts = await Posts.findAll({
+        include: [{
+					model:Users					
+				}],
+        filter});
 
       if (!posts.length) {
         return res.status(404).json("Eita! Não foi feito nenhum post ainda");
