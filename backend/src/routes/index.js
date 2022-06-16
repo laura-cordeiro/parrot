@@ -18,5 +18,7 @@ routes.delete("/users/:id", UsersController.deleteUsers);
 routes.get("/posts/:id",validatorGetPost, PostsController.getUserPosts);
 routes.get("/posts", PostsController.getAllPosts);
 routes.post("/post",validatorCreatePost,PostsController.createPost);
+routes.put("/post/:id",PostsController.updatePost);
+routes.delete("/post/:id",PostsController.deletePost);
 
 module.exports = routes;
