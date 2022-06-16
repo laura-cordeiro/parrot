@@ -20,5 +20,13 @@ export function loginUsuario(payload: UsuarioLogin) {
     return baseApi.post('/login', payload)
 }
 
+export function listarPosts() {
+    return baseApi('//user-posts/:id')
+}
+
+// export function testeUsuario() {
+//     return baseApi.get('/users')
+// }
+
 
 
