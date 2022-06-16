@@ -11,7 +11,7 @@ const Header = () => {
                     <img src={Logo} alt='Logo Parrot'></img>
                 </div>
                 <div>
-                    <p id='usuario'>Olá, usuário | <Link to='/login' id='exit'>sair</Link></p>
+                    <p id='usuario'>Olá, usuário | <Link to='/' id='exit'>sair</Link></p>
                 </div>
             </div>
 
