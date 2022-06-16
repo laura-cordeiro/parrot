@@ -2,7 +2,7 @@ const Users = require("./Users"),
   Posts = require("../../posts/models/Posts");
 
 Users.hasMany(Posts, {
-  foreignKey: "idUsers"
+  foreignKey: "idUser"
 });
 
 module.exports = {
