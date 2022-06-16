@@ -13,6 +13,4 @@ app.use(routes);
 
 app.use(handleError);
 
-
-
-app.listen(4000, () => console.log("Servidor rodando na porta 3000"));
+app.listen(4000, () => console.log("Servidor rodando na porta 4000"));
