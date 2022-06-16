@@ -2,13 +2,12 @@ import baseApi from "."
 
 interface UsuarioLogin {
     email: string,
-    senha: string,
+    password: string,
 }
 
 interface UsuarioPayload extends UsuarioLogin{
-    nome: string,
-    senhaConfirmacao: string
-    apartamento: string,
+    name: string,
+    apartment: string,
     
 }
 
