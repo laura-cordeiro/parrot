@@ -7,7 +7,11 @@ const express = require("express"),
   validatorCreatUser = require("../domain/users/validations/createUsers"),
   validatorReadUser = require("../domain/users/validations/getUsers"),
   validatorUptadeUser = require("../domain/users/validations/updateUsers"),
-  validatorDeleteUser = require("../domain/users/validations/deleteUsers");
+  validatorDeleteUser = require("../domain/users/validations/deleteUsers"),
+  authController = require("../domain/login/controllers/authController"),
+  loginValidator = require("../domain/login/validations/loginValidator");
+
+routes.post("/login", loginValidator, authController.login);
 
 routes.post("/users", validatorCreatUser, UsersController.createUser);
 routes.get("/users", UsersController.readUsers);
