@@ -2,6 +2,12 @@ const { Users } = require("../../users/models/");
 const { Posts } = require("../models/");
 
 const PostsServices = {
+
+  async checkAuthorization(req){
+    const {idUser} =  req.params;
+    return await req.auth.idUser == id;
+   },
+
   async findUser(idUser) {
     const checkUser = await Users.count({ where: { idUser } });
     return checkUser;
@@ -12,10 +18,52 @@ const PostsServices = {
     return checkPost;
   },
 
+  async findPostsByUser(req){
+    const { id } = req.params;
+    const { page = 1 } = req.query;
+    const limit = 10;
+    const offset = limit * (parseInt(page) - 1);
+
+    let filter = {};
+
+    if (id) {
+      Object.assign(filter, {
+        where: {
+          idUser: id,
+        },
+        limit,
+        offset,
+      });
+    }
+
+    const posts = await Posts.findAll(filter);
+
+    return posts;
+  },
+
+  async findAllPosts(req) {
+    const { page = 1 } = req.query;
+    const limit = 10;
+    const offset = limit * (parseInt(page) - 1);
+
+    let filter = {
+      limit,
+      offset,
+    };
+    const posts = await Posts.findAll({
+      include: [{
+        model:Users					
+      }],
+      filter});
+
+      return posts;
+  },
+
   async createPost(data) {
     const newPost = await Posts.create({
-      ...data,
+      ...data.body,
     });
+    return newPost;
   },
 
   async updatePost(id,data) {
@@ -30,17 +78,20 @@ const PostsServices = {
         },
       }
     );    
+    return updatedPost;
   },
 
   async deletePost(id) {
-    const updatedPost = await Posts.destroy(
+    const deletedPost = await Posts.destroy(
       {
         where: {
           idPosts: id,
         },
       }
     );    
+    return deletedPost;
   },
+  
 
 };
 

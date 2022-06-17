@@ -14,16 +14,16 @@ const express = require("express"),
 
 routes.post("/login", loginValidator, authController.login);
 
-routes.post("/users", validatorCreatUser, UsersController.createUser);
-routes.get("/users", UsersController.readUsers);
-routes.get("/users/:id", validatorReadUser, UsersController.readUsersId);
-routes.put("/users/:id", validatorUptadeUser, UsersController.updateUsers);
-routes.delete("/users/:id", validatorDeleteUser, UsersController.deleteUsers);
+routes.post("/users",validatorCreatUser, UsersController.createUser);
+routes.get("/users",authenticator,UsersController.readUsers);
+routes.get("/users/:id",authenticator, validatorReadUser, UsersController.readUsersId);
+routes.put("/users/:id",authenticator, validatorUptadeUser, UsersController.updateUsers);
+routes.delete("/users/:id",authenticator, validatorDeleteUser, UsersController.deleteUsers);
 
 routes.get("/posts/:id",authenticator, validatorGetPost, PostsController.getUserPosts);
-routes.get("/posts", PostsController.getAllPosts);
-routes.post("/post", validatorCreatePost, PostsController.createPost);
-routes.put("/post/:id", PostsController.updatePost);
-routes.delete("/post/:id", PostsController.deletePost);
+routes.get("/posts", authenticator,PostsController.getAllPosts);
+routes.post("/post",authenticator,validatorCreatePost, PostsController.createPost);
+routes.put("/post/:id",authenticator, PostsController.updatePost);
+routes.delete("/post/:id",authenticator, PostsController.deletePost);
 
 module.exports = routes;

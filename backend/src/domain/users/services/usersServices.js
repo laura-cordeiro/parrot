@@ -2,11 +2,15 @@ const { Users } = require("../models");
 const bcrypt = require("bcryptjs");
 
 const usersServices = {
+  async checkAuthorization(req) {
+    const { id } = req.params;
+    return (await req.auth.idUser) == id;
+  },
   async register(data) {
     const { password } = data;
     const newUser = await Users.create({
       ...data,
-      password: this.getNewPassword(password)
+      password: this.getNewPassword(password),
     });
     return newUser;
   },
@@ -24,7 +28,7 @@ const usersServices = {
     const offset = limit * (parseInt(page) - 1);
     let filter = {
       limit,
-      offset
+      offset,
     };
     const listUsers = await Users.findAll(filter);
     return listUsers;
@@ -32,7 +36,7 @@ const usersServices = {
   async readId(data) {
     const { id } = data;
     const listUsers = await Users.findOne({
-      where: { idUser: id }
+      where: { idUser: id },
     });
     return listUsers;
   },
@@ -41,12 +45,12 @@ const usersServices = {
     const updateUser = await Users.update(
       {
         ...data,
-        password: this.getNewPassword(password)
+        password: this.getNewPassword(password),
       },
       {
         where: {
-          idUser: id
-        }
+          idUser: id,
+        },
       }
     );
     return updateUser;
@@ -55,16 +59,16 @@ const usersServices = {
     const { id } = data;
     const userValidation = await Users.count({
       where: {
-        idUser: id
-      }
+        idUser: id,
+      },
     });
     await Users.destroy({
       where: {
-        idUser: id
-      }
+        idUser: id,
+      },
     });
     return userValidation;
-  }
+  },
 };
 
 module.exports = usersServices;

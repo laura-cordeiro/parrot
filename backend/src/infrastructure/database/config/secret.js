@@ -1,3 +1,3 @@
 module.exports = {
-  chave: "Grupo14HandsOn4"
+  chave: "HandsOn4Grupo14"
 };

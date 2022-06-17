@@ -5,19 +5,7 @@ const PostsServices = require("../services/postsServices");
 const PostsController = {
   async getAllPosts(req, res) {
     try {
-      const { page = 1 } = req.query;
-      const limit = 10;
-      const offset = limit * (parseInt(page) - 1);
-
-      let filter = {
-        limit,
-        offset,
-      };
-      const posts = await Posts.findAll({
-        include: [{
-					model:Users					
-				}],
-        filter});
+      const posts = await PostsServices.findAllPosts(req)
 
       if (!posts.length) {
         return res.status(404).json("Eita! Não foi feito nenhum post ainda");
@@ -30,24 +18,13 @@ const PostsController = {
   },
   async getUserPosts(req, res) {
     try {
-      const { id } = req.params;
-      const { page = 1 } = req.query;
-      const limit = 10;
-      const offset = limit * (parseInt(page) - 1);
 
-      let filter = {};
+      // const checkAuth = await PostsServices.checkAuthorization(req)
+      // if (!checkAuth){
+      //   return res.status(401).json("Usuário não autorizado!")
+      // }
 
-      if (id) {
-        Object.assign(filter, {
-          where: {
-            idUser: id,
-          },
-          limit,
-          offset,
-        });
-      }
-
-      const posts = await Posts.findAll(filter);
+      const posts = await PostsServices.findPostsByUser(req)
 
       if (!posts.length) {
         return res.status(404).json("Id não encontrado!");
@@ -65,7 +42,11 @@ const PostsController = {
       if (!checkUser) {
         return res.status(400).send("Id não encontrado!");
       }
-      const newPost = await PostsServices.createPost(req.body);
+
+    console.log(req.body);
+
+      const newPost = await PostsServices.createPost(req);
+      
       if (!newPost) {
         return res.status(500).json("Falha na criação do post!");
       }
