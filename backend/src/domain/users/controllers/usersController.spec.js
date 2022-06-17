@@ -61,42 +61,55 @@ describe("No usersControllers ao executar a função", () => {
 
   describe("Listar todos os usuários", () => {
     test("Em caso de sucesso, retornar o status 200", async () => {
-      const expectResponse = await supertest(app).get("/users");
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTU0MzY2Nzd9.MjcanX5x6-dCguf7qf_tlDPmliTbT13IIG8dDlG1pU4";
+      const expectResponse = await supertest(app)
+        .get("/users")
+        .set("Authorization", `Bearer ${token}`);
       expect(expectResponse.status).toBe(200);
     });
   });
 
   describe("Listar usuário por id", () => {
     test("Em caso de sucesso, retornar o status 200", async () => {
-      const expectResponse = await supertest(app).get("/users/10");
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTU0MzY2Nzd9.MjcanX5x6-dCguf7qf_tlDPmliTbT13IIG8dDlG1pU4";
+      const expectResponse = await supertest(app)
+        .get("/users/275")
+        .set("Authorization", `Bearer ${token}`);
       expect(expectResponse.body).toEqual(
         expect.objectContaining({
-          idUser: 10,
-          name: "Lois Powlowski PhD",
-          email: "Lora.Feeney@yahoo.com",
-          apartment: 57,
-          password: "5Isv_0wtgz6ojUQ",
+          idUser: 275,
+          name: "Pessoa teste",
+          email: "pessoateste@yahoo.com",
+          apartment: 410,
+          password:
+            "$2a$10$HkjxlA3OCehfZtG72riMseRtvLNZrzDwTq/O8sMtjRFR44.RanUuS",
           admin: null,
           deletedAt: null,
-          createdAt: "2022-06-16T02:29:29.000Z",
-          updatedAt: "2022-06-16T02:29:29.000Z"
+          createdAt: "2022-06-17T03:29:46.000Z",
+          updatedAt: "2022-06-17T03:29:46.000Z"
         })
       );
     });
 
     test("Em caso id não encontrado, retornar o status 404", async () => {
-      const expectResponse = await supertest(app).get("/users/500");
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTU0MzY2Nzd9.MjcanX5x6-dCguf7qf_tlDPmliTbT13IIG8dDlG1pU4";
+      const expectResponse = await supertest(app)
+        .get("/users/500")
+        .set("Authorization", `Bearer ${token}`);
       expect(expectResponse.status).toBe(404);
     });
   });
 
   describe("Atualizar usuário", () => {
     test("Em caso de sucesso, retornar o status 200", async () => {
-      const expectResponse = await supertest(app).put("/users/2").send({
-        name: "Maria José",
-        email: "mariajose@email.com",
+      const expectResponse = await supertest(app).put("/users/297").send({
+        name: "Pessoa teste para atualizar 2",
+        email: "pessoatesteparaatualizar2@yahoo.com",
         apartment: 15,
-        password: "564789"
+        password: "789123"
       });
       expect(expectResponse.status).toBe(200);
     });
