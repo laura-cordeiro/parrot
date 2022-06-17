@@ -11,6 +11,11 @@ interface UsuarioPayload extends UsuarioLogin{
     
 }
 
+interface MensagemPost {
+    idUser: number | any,
+    content: string
+}
+
 export function cadastroUsuario(payload: UsuarioPayload) {
     return baseApi.post('/users', payload)
 }
@@ -20,20 +25,20 @@ export function loginUsuario(payload: UsuarioLogin) {
 }
 
 export function listarPostsGeral() {
-    return baseApi('/posts')
+    return baseApi.get('/posts')
 }
 
 export function infoUsuario(id:any) {
-    return baseApi(`/users/${id}`)
+    return baseApi.get(`/users/${id}`)
 }
 
 export function listarPostsUsuario(id:any) {
-    return baseApi(`/posts/${id}`)
+    return baseApi.get(`/posts/${id}`)
 }
 
-// export function testeUsuario() {
-//     return baseApi.get('/users')
-// }
+export function criarPost(payload: MensagemPost) {
+    return baseApi.post('/post', payload)
+}
 
 
 

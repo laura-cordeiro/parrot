@@ -13,7 +13,7 @@ const MyRoutes = () => {
                 <Route path='/cadastro' element={<SignUp />} />
                 <Route path='/editar' element={<EditUser />} />
                 <Route path='/perfil/:id' element={<UserProfile />} />
-                <Route path='/feed/:id' element={<Feed />} />
+                <Route path='/feed/:idUser' element={<Feed />} />
             </Routes>
         </BrowserRouter>
     )
