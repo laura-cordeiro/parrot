@@ -4,7 +4,7 @@ const { Posts } = require("../models/");
 const PostsServices = {
 
   async checkAuthorization(req,id){
-    return await req.auth.idUser == id;
+    return await req.auth.idUser == id || req.auth.admin==true;
    },
 
   async findUser(idUser) {
