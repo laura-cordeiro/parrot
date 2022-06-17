@@ -98,66 +98,32 @@ describe("No usersControllers ao executar a função", () => {
         })
       );
     });
-
-    // test("Em caso id não encontrado, retornar o status 404", async () => {
-    //   const token =
-    //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjMzMCwiZW1haWwiOiJwZXNzb2FjYWRhc3RyYWRhQHlhaG9vLmNvbSIsImFkbWluIjpudWxsLCJpYXQiOjE2NTU0NDA0NTZ9.x3Q9yPJRYVXHdtHQRPl197brm1EsfgcSRTsdjy5hDdA";
-    //   const expectResponse = await supertest(app)
-    //     .get("/users/500")
-    //     .set("Authorization", `Bearer ${token}`);
-    //   expect(expectResponse.status).toBe(404);
-    // });
   });
 
   describe("Atualizar usuário", () => {
     test("Em caso de sucesso, retornar o status 200", async () => {
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjI3NSwiZW1haWwiOiJwZXNzb2F0ZXN0ZUB5YWhvby5jb20iLCJhZG1pbiI6bnVsbCwiaWF0IjoxNjU1NDYyOTU0fQ.t-eAIKpwpLGKCm4mKiB_Wz3fG_Uk10x6TtWKEGm9zxU";
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjM5MSwiZW1haWwiOiJhQGEuY29tIiwiYWRtaW4iOm51bGwsImlhdCI6MTY1NTQ3MTA5NX0.Lvw0nG1DZYczmmkPNeTemtvao-Apvg6MAUZX93iqj3c";
       const expectResponse = await supertest(app)
-        .put("/users/275")
-        .auth("Authorization", `Bearer ${token}`)
+        .put("/users/391")
+        .set("Authorization", `Bearer ${token}`)
         .send({
-          name: "Pessoa teste update",
-          email: "pessoatesteparaatualizar2@yahoo.com",
-          apartment: 15,
-          password: "547634"
+          name: "Danilo Teste",
+          apartment: 10,
+          password: "1234567"
         });
       expect(expectResponse.status).toBe(200);
     });
-
-    // test("Em caso id não encontrado, retornar o status 400", async () => {
-    //   const token =
-    //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTU0MzY2Nzd9.MjcanX5x6-dCguf7qf_tlDPmliTbT13IIG8dDlG1pU4";
-    //   const expectResponse = await supertest(app)
-    //     .put("/users/500")
-    //     .set("Authorization", `Bearer ${token}`)
-    //     .send({
-    //       name: "Uptade id não existente",
-    //       email: "Uptadeidnaoexistente@email.com",
-    //       apartment: 18,
-    //       password: "875921"
-    //     });
-    //   expect(expectResponse.status).toBe(400);
-    // });
   });
 
-  // describe("Deletar usuário", () => {
-  //   test("Em caso de sucesso, retornar o status 204", async () => {
-  //     const token =
-  //       "      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjM2NSwiZW1haWwiOiJwZXNzb2FkZWxldGFkYUB5YWhvby5jb20iLCJhZG1pbiI6bnVsbCwiaWF0IjoxNjU1NDYzNjU3fQ.driKfGjK5a3RPJ8skeWlmx0kBVrN-l00FDRPa_J8obo";
-  //     const expectResponse = await supertest(app)
-  //       .delete("/users/365")
-  //       .set("Authorization", `Bearer ${token}`);
-  //     expect(expectResponse.status).toBe(204);
-  //   });
-
-  //   test("Em caso id não encontrado, retornar o status 404", async () => {
-  //     const token =
-  //       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTU0MzY2Nzd9.MjcanX5x6-dCguf7qf_tlDPmliTbT13IIG8dDlG1pU4";
-  //     const expectResponse = await supertest(app)
-  //       .delete("/users/1111")
-  //       .set("Authorization", `Bearer ${token}`);
-  //     expect(expectResponse.status).toBe(404);
-  //   });
-  //   });
+  describe("Deletar usuário", () => {
+    test("Em caso de sucesso, retornar o status 204", async () => {
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjQwNSwiZW1haWwiOiJkZWxldGFkb2ZpbmFsQGVtYWlsLmNvbSIsImFkbWluIjpudWxsLCJpYXQiOjE2NTU0NzQ1OTZ9.OIVNjDNV4JNIo63j7bzxJ9EBRV1fdFLyAeVcggX-670";
+      const expectResponse = await supertest(app)
+        .delete("/users/405")
+        .set("Authorization", `Bearer ${token}`);
+      expect(expectResponse.status).toBe(204);
+    });
+  });
 });
