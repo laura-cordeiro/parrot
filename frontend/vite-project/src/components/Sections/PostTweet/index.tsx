@@ -1,13 +1,45 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 
 import Picture from '../../../assets/images/imagem-perfil.png'
+import { useState } from 'react';
 import {useFormik} from 'formik';
+import { useParams } from 'react-router-dom';
 
 import './styles.css'
+import { criarPost } from '../../../services/MainApi/config/create';
+
+
 
 const PostTweet: React.FC = () => {
-    return (
 
+    const [content, setContent] = useState<string>('')
+
+    const { idUser } = useParams()
+    
+    const enviarPost = async (event: FormEvent) => {
+        
+        const payload = {
+            idUser,
+            content
+        }
+
+       
+
+        try {
+            const response = await criarPost(payload)
+
+        } catch (error:any) {
+            alert('Ops! Ocorreu um problema')
+            return console.log(error.response.data);
+            
+            
+        }
+    }
+       
+    
+
+    return (
+        
         <div className='wrapper-post ms-auto'>
             <div className="user-info ">
                 <div className="user-image">
@@ -15,13 +47,15 @@ const PostTweet: React.FC = () => {
                 </div>
                 <div className='post'>
 
-                <form> 
+                <form onSubmit={enviarPost}> 
                 
                     
                 <textarea  rows={2.5} className='text-area'
                     name='message'
                     id='message'
                     placeholder='Coloque aqui a sua mensagem'
+                    value={content}
+                    onChange={(event) => setContent(event.target.value)}
                     //value={formik.values.message}
                     //onChange={formik.handleChange}
                 />
