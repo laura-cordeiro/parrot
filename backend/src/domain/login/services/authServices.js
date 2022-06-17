@@ -14,12 +14,12 @@ const loginServices = {
     return bcrypt.compareSync(password, passwordDB);
   },
   
-  getToken(data) {
+  getToken(idUser,email,admin) {
     const token = jwt.sign(
       {
-        idUser: data.idUser,
-        name: data.name,
-        email: data.email,
+        idUser: idUser,
+        email: email,
+        admin: admin,
       },
       secret.chave
     );

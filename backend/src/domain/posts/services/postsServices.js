@@ -3,18 +3,17 @@ const { Posts } = require("../models/");
 
 const PostsServices = {
 
-  async checkAuthorization(req){
-    const {idUser} =  req.params;
+  async checkAuthorization(req,id){
     return await req.auth.idUser == id;
    },
 
   async findUser(idUser) {
-    const checkUser = await Users.count({ where: { idUser } });
+    const checkUser = await Users.findOne({ where: { idUser } });
     return checkUser;
   },
 
   async findPost(id) {
-    const checkPost = await Posts.count({ where: { idPosts:id } });
+    const checkPost = await Posts.findOne({ where: { idPosts:id } });
     return checkPost;
   },
 

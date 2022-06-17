@@ -18,11 +18,11 @@ const PostsController = {
   },
   async getUserPosts(req, res) {
     try {
-
-      // const checkAuth = await PostsServices.checkAuthorization(req)
-      // if (!checkAuth){
-      //   return res.status(401).json("Usuário não autorizado!")
-      // }
+      const {id} = req.params;
+      const checkAuth = await PostsServices.checkAuthorization(req,id)   
+      if (!checkAuth){
+        return res.status(401).json("Usuário não autorizado!")
+      }
 
       const posts = await PostsServices.findPostsByUser(req)
 
@@ -38,15 +38,17 @@ const PostsController = {
   async createPost(req, res) {
     try {
       const { idUser } = req.body;
+      const checkAuth = await PostsServices.checkAuthorization(req,idUser)   
+      if (!checkAuth){
+        return res.status(401).json("Usuário não autorizado!")
+      }
       const checkUser = await PostsServices.findUser(idUser);
       if (!checkUser) {
         return res.status(400).send("Id não encontrado!");
       }
-
-    console.log(req.body);
-
-      const newPost = await PostsServices.createPost(req);
       
+      const newPost = await PostsServices.createPost(req);
+
       if (!newPost) {
         return res.status(500).json("Falha na criação do post!");
       }
@@ -64,6 +66,11 @@ const PostsController = {
       if (!checkPost) {
         return res.status(400).json("Post não encontrado!");
       }
+      const checkAuth = await PostsServices.checkAuthorization(req,checkPost.idUser)   
+      if (!checkAuth){
+        return res.status(401).json("Usuário não autorizado!")
+      }
+
 
       const updatePost = await PostsServices.updatePost(id, req.body);
       return res.status(200).json("Post atualizado!");
@@ -83,7 +90,11 @@ const PostsController = {
       if (!checkPost) {
         return res.status(400).send("Post não encontrado!");
       }
-      
+      const checkAuth = await PostsServices.checkAuthorization(req,checkPost.idUser)   
+      if (!checkAuth){
+        return res.status(401).json("Usuário não autorizado!")
+      }
+
       const deletedPost = await PostsServices.deletePost(id);
       return res.status(204).json("Post excluido com sucesso!")
 
