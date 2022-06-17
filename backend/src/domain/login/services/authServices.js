@@ -1,5 +1,5 @@
 const { Users } = require("../../users/models");
-const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secret = require("../../../infrastructure/database/config/secret");
 
@@ -11,7 +11,7 @@ const loginServices = {
   },
 
   checkPassword(password,passwordDB) {
-    return bcryptjs.compareSync(password, passwordDB);
+    return bcrypt.compareSync(password, passwordDB);
   },
   
   getToken(data) {
