@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const usersServices = {
   async checkAuthorization(req,id){
-    return await req.auth.idUser == id;
+    return await req.auth.idUser == id || req.auth.admin == true;
    },
   async register(data) {
     const { password } = data;
