@@ -26,6 +26,13 @@ const UsersController = {
   },
   async readUsersId(req, res) {
     try {
+      const { id } = req.params;
+
+      const checkAuth = await usersServices.checkAuthorization(req, id);
+      if (!checkAuth) {
+        return res.status(401).json("Usuário não autorizado!");
+      }
+
       const listUsers = await usersServices.readId(req.params);
       if (!listUsers) return res.status(404).json("Usuário não encontrado");
       return res.status(200).json(listUsers);
@@ -36,6 +43,12 @@ const UsersController = {
   async updateUsers(req, res) {
     try {
       const { id } = req.params;
+
+      const checkAuth = await usersServices.checkAuthorization(req, id);
+      if (!checkAuth) {
+        return res.status(401).json("Usuário não autorizado!");
+      }
+
       const updateUser = await usersServices.updateId(id, req.body);
       if (updateUser == 0)
         return res.status(400).json("Usuário não cadastrado");
@@ -46,6 +59,13 @@ const UsersController = {
   },
   async deleteUsers(req, res) {
     try {
+      const {id} = req.params;
+      
+      const checkAuth = await usersServices.checkAuthorization(req, id);
+      if (!checkAuth) {
+        return res.status(401).json("Usuário não autorizado!");
+      }
+
       const userValidation = await usersServices.delete(req.params);
       if (!userValidation)
         return res.status(404).json("Usuário não encontrado");
@@ -53,6 +73,6 @@ const UsersController = {
     } catch (error) {
       return res.status(500).json("Erro ao tentar excluir usuário");
     }
-  }
+  },
 };
 module.exports = UsersController;

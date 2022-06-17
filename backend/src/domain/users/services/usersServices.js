@@ -2,10 +2,9 @@ const { Users } = require("../models");
 const bcrypt = require("bcryptjs");
 
 const usersServices = {
-  async checkAuthorization(req) {
-    const { id } = req.params;
-    return (await req.auth.idUser) == id;
-  },
+  async checkAuthorization(req,id){
+    return await req.auth.idUser == id;
+   },
   async register(data) {
     const { password } = data;
     const newUser = await Users.create({
