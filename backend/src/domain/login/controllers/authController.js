@@ -1,4 +1,5 @@
 const { Users } = require("../../users/models");
+const secret = require("../../../infrastructure/database/config/secret");
 const authServices = require("../services/authServices");
 const { checkPassword } = require("../services/authServices");
 
@@ -26,7 +27,7 @@ const authController = {
         });
       }    
 
-      const token = authServices.getToken(user.idUser,user.name,user.email)
+      const token = authServices.getToken(user.idUser,email,user.admin)
 
       return res.json(token);
     } catch (error) {
